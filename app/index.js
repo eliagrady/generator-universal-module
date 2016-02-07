@@ -28,6 +28,19 @@ module.exports = yeoman.Base.extend({
         return val.length > 0 ? true : 'You have to provide a username';
       }
     }, {
+      type: 'checkbox',
+      name: 'deps',
+      message: 'Are you planning to use these dependencies in your module?',
+      choices: [{
+        name: 'bliss',
+        value: 'inclBliss',
+        checked: false,
+      },{
+        name: 'lodash-es',
+        value: 'inclLodash',
+        checked: false,
+      }],
+    }, {
       name: 'isSeparated',
       message: 'Would you like to keep your server/client tests separate?',
       type: 'confirm',
@@ -77,6 +90,8 @@ module.exports = yeoman.Base.extend({
         username: props.username,
         isSeparated: props.isSeparated,
         inclSinon: props.inclSinon,
+        inclBliss: props.inclBliss,
+        inclLodash: props.inclLodash,
         includePhantom: browserIncluded(browsers, 'includePhantomJS'),
         includeChrome: browserIncluded(browsers, 'includeChrome'),
         includeFirefox: browserIncluded(browsers, 'includeFirefox'),
